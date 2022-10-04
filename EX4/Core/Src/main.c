@@ -259,14 +259,13 @@ int main(void)
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
-  HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, RESET);
 
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int hour = 15 , minute = 8 , second = 50;
+  int hour = 15 , minute = 59 , second = 50;
 
   while (1)
   {
@@ -425,7 +424,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-int counter = 26;		//thiet lap he so
+int counter = 25;		//thiet lap he so
 int led_index = 0;
 int state = 0;
 
@@ -434,8 +433,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if (led_index > 3) {
 		led_index = 0;
 		HAL_GPIO_TogglePin(DOT2_GPIO_Port, DOT2_Pin);
-
 	}
+
 	if (counter ==  1){
 			//BEGIN-TODO
 
@@ -443,12 +442,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 
 			//END-TODO
-		counter = 26;		// * thay doi he so *
+		counter = 25;		// * thay doi he so *
 
-		if(state > 3){
-			state = 0;
-		}
-		else state ++;
 	}
 	else counter--;
 }
