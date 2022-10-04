@@ -34,40 +34,40 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := Ex3
+BUILD_ARTIFACT_NAME := Ex5
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-Ex3.elf \
+Ex5.elf \
 
 MAP_FILES += \
-Ex3.map \
+Ex5.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-Ex3.list \
+Ex5.list \
 
 OBJCOPY_HEX += \
-Ex3.hex \
+Ex5.hex \
 
 OBJCOPY_BIN += \
-Ex3.bin \
+Ex5.bin \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: Ex3.elf secondary-outputs
+main-build: Ex5.elf secondary-outputs
 
 # Tool invocations
-Ex3.elf Ex3.map: $(OBJS) $(USER_OBJS) C:\Users\ASUS\Downloads\Documents\221_Vi\ xu\ ly\ThiNghiem\LAB2\EX3\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Ex3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\ASUS\Downloads\Documents\221_Vi xu ly\ThiNghiem\LAB2\EX3\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Ex3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Ex5.elf Ex5.map: $(OBJS) $(USER_OBJS) C:\Users\ASUS\Downloads\Documents\221_Vi\ xu\ ly\ThiNghiem\LAB2\EX4\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Ex5.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\ASUS\Downloads\Documents\221_Vi xu ly\ThiNghiem\LAB2\EX4\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Ex5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -76,24 +76,24 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Ex3.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Ex3.list"
+Ex5.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Ex5.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Ex3.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "Ex3.hex"
+Ex5.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "Ex5.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Ex3.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "Ex3.bin"
+Ex5.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "Ex5.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) Ex3.bin Ex3.elf Ex3.hex Ex3.list Ex3.map default.size.stdout
+	-$(RM) Ex5.bin Ex5.elf Ex5.hex Ex5.list Ex5.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
